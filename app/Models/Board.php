@@ -1,12 +1,12 @@
 <?php
 declare(strict_types = 1);
 
-namespace {{ namespace }};
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class {{ class }} extends Model
+class Board extends Model
 {
     use HasFactory;
 }

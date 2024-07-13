@@ -9,16 +9,16 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('{{ table }}', function (Blueprint $table) {
-            //
+        Schema::create('boards', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->timestamps();
         });
     }
-
     public function down(): void
     {
-        if(!app()->isProduction()) {
-            Schema::table('{{ table }}', function (Blueprint $table) {
-        });
+        if (!app()->IsProduction) {
+            Schema::dropIfExists('boards');
         }
     }
 };
