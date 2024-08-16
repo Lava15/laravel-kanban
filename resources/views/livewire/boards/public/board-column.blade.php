@@ -1,15 +1,15 @@
-<div class="bg-white shrink-0 self-start rounded-lg shadow-sm max-h-full w-[260px]">
+<div class="bg-white shrink-0 self-start rounded-lg shadow-sm max-h-full w-[260px] flex flex-col">
     <div class="flex items-center justify-between">
         <div
          x-data="{editing: false}"
          class="flex items-center w-full h-8 min-w-0 px-4 pr-0"
          x-on:click.outside="editing = false"
          >
-          <button class="w-full text-left"
+          <button class="w-full font-medium text-left"
            x-on:click="editing = true"
            x-show="!editing"
            >
-           title
+           {{-- {{ $column->title }} --}}
            </button>
            <template x-if="editing">
                 <form class="-ml-[calc(theme(margin[1.5]) - 1px] grow"> 
@@ -28,10 +28,13 @@
                 <x-slot name="content">
                     Content
                 </x-slot>
-
             </x-dropdown>
         </div>
     </div>
-    <div>cards</div>
-    <div>add card</div>
+    <div class="p-3 space-y-1.5 pt-0 overflow-y-scroll">
+        @foreach (range(1, random_int(1, 30))  as $card )
+            <livewire:boards.public.card />
+        @endforeach
+    </div>
+    <div class="p-3">add card</div>
 </div>
