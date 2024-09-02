@@ -10,6 +10,8 @@ class BoardColumn extends Component
     public Column $column;
     public function render()
     {
-        return view('livewire.boards.public.board-column');
+        return view('livewire.boards.public.board-column', [
+            'cards' => $this->column->cards()->ordered()->get(),
+        ]);
     }
 }

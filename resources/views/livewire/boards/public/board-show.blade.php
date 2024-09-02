@@ -1,6 +1,11 @@
-<div class="flex space-x-6 w-max h-[calc(theme(height.screen)-50px)]">
+<div 
+    wire:sortable="sorted"
+    class="flex space-x-6 w-max h-[calc(theme(height.screen)-50px)]"
+>
     {{ $board->title}}
-    @foreach (range(1, 10) as $column)
-        <livewire:boards.public.board-column />
+    @foreach ($columns as $column)
+        <div wire:key="{{ $column->id }}" wire:sortable.item="{{ $column->id }}">
+            <livewire:boards.public.board-column :key="$column->id" :column="$column" />
+        </div>
     @endforeach
 </div>
