@@ -6,18 +6,21 @@ services:
       context: ./.docker/php
       dockerfile: php.dockerfile
     container_name: php
+    volumes: 
+      - .:/var/www/html
     networks:
       - app
+    expose: 
+      - 9000
 
-    
   postgres:
     image: postgres:16.4
     restart: unless-stopped
     container_name: postgres
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
     ports:
       - 5432:5432
     volumes:
@@ -29,13 +32,13 @@ services:
     build:
       context: ./.docker/nginx
       dockerfile: nginx.dockerfile
-    restart: unless-stopped
+    restart: always
     container_name: nginx
     ports:
       - 80:80
       - 443:443
     volumes:
-      - ./.docker/nginx:/etc/nginx/conf.d
+      - .:/var/www/html 
     networks:
       - app
 networks:
