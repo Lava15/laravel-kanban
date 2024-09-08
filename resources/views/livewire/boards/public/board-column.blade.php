@@ -1,13 +1,13 @@
 <div class="bg-white shrink-0 self-start rounded-lg shadow-sm max-h-full w-[260px] flex flex-col">
     <div class="flex items-center justify-between">
         <div
-         x-data="{editing: false}"
-         class="flex items-center w-full h-8 min-w-0 px-4 pr-0"
-         x-on:click.outside="editing = false"
+             x-data="{editing: false}"
+             class="flex items-center w-full h-8 min-w-0 px-4 pr-0"
+             x-on:click.outside="editing = false"
          >
           <button class="w-full font-medium text-left"
-           x-on:click="editing = true"
-           x-show="!editing"
+               x-on:click="editing = true"
+               x-show="!editing"
            >
            {{ $column->title }}
            </button>
@@ -31,10 +31,13 @@
             </x-dropdown>
         </div>
     </div>
-    <div class="p-3 space-y-1.5 pt-0 overflow-y-scroll">
+    <div 
+        class="p-3 space-y-1.5 pt-0 overflow-y-scroll"
+        wire:sortable-group.item-group="{{ $column->id }}"
+    >
         @foreach ($cards as $card)
-            <livewire:boards.public.card wire:key='card-{{$card->id}}' :card="$card" />
+            <div wire:key="{{ $card->id }}" wire:sortable-group.item="{{ $card->id }}"><livewire:boards.public.card wire:key="$card->id" :card="$card" /></div>
         @endforeach
     </div>
-    <div class="p-3">add card</div>
+    <div class="p-3">Add card</div>
 </div>

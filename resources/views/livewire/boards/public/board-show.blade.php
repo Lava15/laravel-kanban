@@ -1,5 +1,6 @@
 <div 
     wire:sortable="sorted"
+    wire:sortable-group="moved"
     class="flex space-x-6 w-max h-[calc(theme(height.screen)-50px)]"
 >
     {{ $board->title}}

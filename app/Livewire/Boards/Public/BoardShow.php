@@ -31,8 +31,12 @@ class BoardShow extends Component
     {
         $order = collect($items)->pluck('value')->toArray();
         Column::setNewOrder($order, 1, 'id', function (Builder $query) {
-            $query->where('user_id' , auth()->id());
+            $query->where('user_id' , auth()?->id());
         });
+    }
+    public function moved(array $items): void
+    {
+        //
     }
     public function render()
     {
