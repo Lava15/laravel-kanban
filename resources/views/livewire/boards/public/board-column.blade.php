@@ -36,7 +36,9 @@
         wire:sortable-group.item-group="{{ $column->id }}"
     >
         @foreach ($cards as $card)
-            <div wire:key="{{ $card->id }}" wire:sortable-group.item="{{ $card->id }}"><livewire:boards.public.card wire:key="$card->id" :card="$card" /></div>
+            <div wire:key="$card->id" wire:sortable-group.item="{{ $card->id }}">
+                <livewire:boards.public.card :key="$card->id" :card="$card" />
+            </div>
         @endforeach
     </div>
     <div class="p-3">Add card</div>

@@ -1,3 +1,3 @@
 import './bootstrap';
-import 'livewire-sortable';
+import '@nextapps-be/livewire-sortablejs';
 

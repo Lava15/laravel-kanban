@@ -14,6 +14,7 @@ class Card extends Model implements Sortable
 {
     use HasFactory;
     use SortableTrait;
+    protected $fillable = ['title', 'order', 'column_id'];
     public $sortable = [
         'order_column_name' => 'order',
         'sort_when_creating' => true,
