@@ -16,6 +16,6 @@ final class BladeServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Vite::macro('image', fn ($asset) =>  asset('assets/' . $asset));
-        Vite::macro('icon', fn ($asset) =>  Vite::asset("@icon/{$asset}"));
+        Vite::macro('icon', fn ($asset) =>  asset('assets/icons/' . $asset));
     }
 }
